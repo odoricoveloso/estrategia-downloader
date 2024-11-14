@@ -80,25 +80,9 @@ class Cursos():
             print('\n')
             time.sleep(0.5)
 
-            print("+ Qual a resolução do download do vídeo? \n")
-            print("1. 720p\n")
-            print("2. 480p\n")
-            print("3. 360p\n")
-            resolucao = input("> Digite sua escolha: ")
-            if resolucao == "1":
-                self.resolucao = '720p'
-            elif resolucao == "2":
-                self.resolucao = '480p'
-            elif resolucao == "3":
-                self.resolucao = '360p'
-            else:
-                print("x Opção inválida. Por favor, tente novamente.")
-                time.sleep(1.5)
-                exit(0)
-
             if self.servico == "1":
                 # Download por lista
-                es_download_por_lista(self.page, self.resolucao)
+                es_download_por_lista(self.page)
 
             elif self.servico == "2":
                 # Download por URL
@@ -120,9 +104,9 @@ class Cursos():
                         links.append(link)
 
                     for link in links:
-                        es_download_por_url(self.page, link, self.resolucao, pacote_path=path_pacote)
+                        es_download_por_url(self.page, link, pacote_path=path_pacote)
                 else:
-                    es_download_por_url(self.page, url, self.resolucao, pacote_path=None)
+                    es_download_por_url(self.page, url, pacote_path=None)
         
         self.browser.close()
 
@@ -198,30 +182,14 @@ class Cursos():
             print('\n')
             time.sleep(0.5)
 
-            print("+ Qual a resolução do download do vídeo? \n")
-            print("1. 720p\n")
-            print("2. 480p\n")
-            print("3. 360p\n")
-            resolucao = input("> Digite sua escolha: ")
-            if resolucao == "1":
-                self.resolucao = '720p'
-            elif resolucao == "2":
-                self.resolucao = '480p'
-            elif resolucao == "3":
-                self.resolucao = '360p'
-            else:
-                print("x Opção inválida. Por favor, tente novamente.")
-                time.sleep(1.5)
-                exit(0)
-
             if self.servico == "1":
                 # Download por lista
-                ju_download_por_lista(self.resolucao, token)
+                ju_download_por_lista(token)
                 time.sleep(1)
 
             elif self.servico == "2":
                 # Download por URL
-                ju_download_por_lista(self.resolucao, token)
+                ju_download_por_lista(token)
                 time.sleep(1)
 
         try:
