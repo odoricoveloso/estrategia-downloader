@@ -115,9 +115,13 @@ def login_estrategia(page, email: str, password: str):
     
 def clear_name(name: str) -> str:
     """
-    Limpa o nome do curso.
+    Limpa o nome do curso removendo caracteres não permitidos pelo Windows.
     """
-    return unidecode(re.sub(r'[^\w\s-]', '', name))
+    # Remove caracteres não permitidos pelo Windows
+    invalid_chars = r'[<>:"/\\|?*]'
+    name = re.sub(invalid_chars, '', name)
+    # Remove outros caracteres indesejados
+    return unidecode(re.sub(r'[^\w\s()+-]', '', name))
 
 def remove_ultima_linha():
     """Remove a última linha do terminal."""
